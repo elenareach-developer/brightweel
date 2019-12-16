@@ -4,12 +4,16 @@ import Button from 'react-bootstrap/lib/Button'
 import CustomerDetails from './CustomerDetails'
 import axios from 'axios'
 
+
+
+
 export default class Customers extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      selectedCustomer: 1
+      selectedCustomer: null,
+      selectedCustomerPushed:null
     }
   }
 
@@ -18,41 +22,56 @@ export default class Customers extends Component {
     this.getCustomerData();
   }
 
-  //Function to get the Customer Data from json
+  //Function to get the Repo Data from git
   getCustomerData() {
-    axios.get('assets/samplejson/customerlist.json').then(response => {
-      this.setState({customerList: response})
+    axios.get('https:/api.github.com/search/repositories?q=stars:1..*&sort=stars&order=desc&page=1&per_page=100').then(response => {
+      this.setState({customerList: response.data.items})
     })
   };
+  
+ 
 
   render() {
+    
     if (!this.state.customerList)
       return (<p>Loading data</p>)
+
+    let customerDetails;  
+      if(this.state.selectedCustomer==null){
+        customerDetails = ""
+      }else{
+        customerDetails = <CustomerDetails val={this.state.selectedCustomer} date={this.state.selectedCustomerPushed}/>
+      }
+
+
     return (<div className="addmargin">
       <div className="col-md-3">
         {
 
-          this.state.customerList.data.map(customer => <Panel bsStyle="info" key={customer.name} className="centeralign">
+          this.state.customerList.map(customer => <Panel bsStyle="info" key={customer.id} className="centeralign">
             <Panel.Heading>
-              <Panel.Title componentClass="h3">{customer.name}</Panel.Title>
+              {customer.full_name}
             </Panel.Heading>
             <Panel.Body>
-              <p>{customer.email}</p>
-              <p>{customer.phone}</p>
-              <Button bsStyle="info" onClick={() => this.setState({selectedCustomer: customer.id})}>
+              <p>{customer.stargazers_count}</p>
+              <p><a href={customer.html_url} target="_blank">{customer.html_url}</a></p>
+              <p>Last Commite was made {customer.pushed_at}</p>
+              <Button bsStyle="info" onClick={() => this.setState({selectedCustomer: customer.full_name, selectedCustomerPushed: customer.pushed_at})}>
 
-                Click to View Details
+                Click to View Last Commite
 
               </Button>
-
             </Panel.Body>
+            
           </Panel>)
         }
       </div>
       <div className="col-md-6">
-        <CustomerDetails val={this.state.selectedCustomer}/>
+        {customerDetails}
       </div>
+      
     </div>)
+  
   }
 
 }
