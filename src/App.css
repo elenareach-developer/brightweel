@@ -22,7 +22,161 @@
   font-size: large;
 }
 
+/**  */
+
+a:link{
+  color:#333;
+  text-decoration:none;
+}
+  
+a:hover{
+  text-decoration:underline;
+  }
+  
+  
+a:visited{
+  color:#333;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;	
+    padding-right: 15px;
+    padding-left: 15px;
+    font-family: 'Lekton', Helvetica, Arial, sans-serif;
+
+  }
+
+h1{
+    font-size:24px;
+    font-weight:bold;
+    font-family: 'Molengo', Georgia, Times, serif;
+    }
+  
+h2{
+    font-size:18px;
+    font-weight:bold;
+    }
+  
+h3{
+  font-size:12px;
+  font-weight:bold;
+  }
+  
+h4{
+  font-size:10px;
+  font-weight:bold; 
+    }
+p {
+  font-size: 10px;
+  line-height: 15px;
+}
+
+.container{
+  margin: 0 auto;
+  overflow: hidden;
+  background-color:#CCC;
+  max-width: 90%;
+}
+    
+header{
+  clear:both;
+  float:left;
+  width:100%;
+  height:100px;
+}
+
+.banner{
+  width:auto;
+  height:100px;
+  clear:both;
+  margin-top:10px;
+  margin-bottom:10px;
+  background-color:#003f5c; 
+  color:white;   
+}
+  
+article{
+	margin:0 auto;
+  width: 100%;
+  overflow: hidden; 
+ }
+
+
+ /**/
+ .columnacont{
+	
+  margin:1%;
+  background-color:#fff;
+  padding:10px 10px;
+    
+    }
+  
+  .mixtogran{
+    
+    float: left;
+    width: 45%;
+    position:relative;
+    
+    
+    }
+  
+  .mixtopetit{
+    
+    float: left;
+    width: 55%;
+    position:relative;
+    
+    
+    }
+
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+/*             */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 95%;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  margin: 10px;
+}
+.card h1{
+  background-color: #5886a5;
+  color:white;
+  font-size: 16px;
+}
+.card h2{
+  background-color: #58508d;
+  color:white;
+  font-size: 12px;
+}
+.stars {
+  color: grey;
+  font-size: 22px;
+}
+.checked {
+  color: orange;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 5px;
+  color: #004c6d;
+  background-color: #9dc6e0;
+  text-align: center;
+  cursor: pointer;
+  width: 60%;
+  font-size: 12px;
+  font-family: 'Lekton', Helvetica, Arial, sans-serif;
+
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+
